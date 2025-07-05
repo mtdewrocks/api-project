@@ -17,6 +17,8 @@ class Hitters(Base):
     props_name = Column(String, nullable=False)
     tm = Column(String, nullable=False)
 
+    game_logs = relationship("Logs", back_populates="hitters")
+
 
 class Logs(Base):
     __tablename__ = "game_logs"
