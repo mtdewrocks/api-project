@@ -22,4 +22,4 @@ def test_get_logs(db_session):
 
 def test_get_player_counts(db_session):
     player_count = crud.get_player_counts(db_session)
-    assert len(player_count)!=0
+    assert player_count!=0

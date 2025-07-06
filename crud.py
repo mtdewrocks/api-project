@@ -4,8 +4,8 @@ from datetime import date
 
 import models
 
-def get_player(db: Session, player_id:int):
-    return db.query(models.Hitters).filter(models.Hitters.savant_id==player_id).first()
+def get_player(db: Session, savant_id:int):
+    return db.query(models.Hitters).filter(models.Hitters.savant_id==savant_id).first()
 
 def get_logs(db: Session, player:str):
     return db.query(models.Logs).filter(models.Logs.name==player)
