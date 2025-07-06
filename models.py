@@ -7,7 +7,7 @@ class Hitters(Base):
     __tablename__ = "hitters"
 
     mlb_name = Column(String, nullable=False)
-    mlb_team = column(String, nullable=False)
+    mlb_team = Column(String, nullable=False)
     bats = Column(String, nullable=False)
     fg_id = Column(Integer, nullable=False)
     fg_name = Column(String, nullable=False)
