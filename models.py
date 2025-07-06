@@ -33,5 +33,5 @@ class Logs(Base):
     hr = Column(Integer, nullable=False)
     so = Column(Integer, nullable=False)
     date = Column(Date, nullable=False)
-    player_name = Column(String, ForeignKey("hitters.baseball_reference_name"))
+    #player_name = Column(String, ForeignKey("hitters.baseball_reference_name"))
     
