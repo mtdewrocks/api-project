@@ -1,6 +1,6 @@
 import pytest
 from datetime import date
-import rud
+import crud
 from database import SessionLocal
 
 @pytest.fixture(scope="function")
