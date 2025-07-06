@@ -26,7 +26,7 @@ class Logs(Base):
     name = Column(String, nullable=False)
     tm = Column(String, nullable=False)
     away_flag = Column(String)
-    mlb_team = column(String, nullable=False)
+    mlb_team = Column(String, nullable=False)
     opp = Column(String)
     ab = Column(Integer, nullable=False)
     h = Column(Integer, nullable=False)
