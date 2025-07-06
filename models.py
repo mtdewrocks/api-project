@@ -22,7 +22,8 @@ class Hitters(Base):
 
 class Logs(Base):
     __tablename__ = "game_logs"
-
+    
+    date_player = Column(String, nullable=False, primary_key=True, index=True)
     name = Column(String, nullable=False)
     tm = Column(String, nullable=False)
     away_flag = Column(String)
