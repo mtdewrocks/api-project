@@ -11,5 +11,5 @@ def get_logs(db: Session, player:str):
     return db.query(models.Logs).filter(models.Logs.name==player)
 
 def get_player_counts(db: Session):
-    query = db.query(models.Player)
+    query = db.query(models.Hitters)
     return query.count()
