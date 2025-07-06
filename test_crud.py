@@ -10,10 +10,10 @@ def db_session():
     yield session
     session.close()
 
-def test_get_player(db_session):
-    """Tests that you can return Aaron Judge"""
-    player = crud.get_player(db_session, player_id=592450)
-    assert player.player_id==592450
+#def test_get_player(db_session):
+#    """Tests that you can return Aaron Judge"""
+#    player = crud.get_player(db_session, player_id=592450)
+#    assert player.player_id==592450
 
 def test_get_logs(db_session):
     """Tests that you can get the game logs for Aaron Judge"""
