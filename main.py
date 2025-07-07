@@ -19,7 +19,7 @@ async def root():
     return {"message":"API health check successful"}
 
 @app.get("/v0/players/", response_model=schemas.Hitters)
-def read_player(player_id:int, db: Session = Depends(get_db)):
+def read_player(savant_id:int, db: Session = Depends(get_db)):
     player = crud.get_player(db, savant_id=savant_id)
     if player is None:
         raise HTTPException(status_code=404, detail="Player not found")
