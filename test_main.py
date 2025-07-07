@@ -15,5 +15,6 @@ def test_read_players():
 
 def test_counts():
     response = client.get("/v0/counts")
+    response_data = response.json()
     assert response.status_code==200
     assert response_data["player_count"]>0
