@@ -7,7 +7,7 @@ class Hitters(BaseModel):
     mlb_team : str
     bats : str
     fg_id : int
-    savan : str
+    savant_name : str
     savant_id : int
     baseball_reference_name : str
     props_name : str
