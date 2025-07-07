@@ -17,7 +17,7 @@ class Hitters(Base):
     props_name = Column(String, nullable=False)
     tm = Column(String, nullable=False)
 
-    #game_logs = relationship("Logs", back_populates="hitters")
+    game_logs = relationship("Logs", back_populates="hitters")
 
 
 class Logs(Base):
@@ -33,5 +33,5 @@ class Logs(Base):
     hr = Column(Integer, nullable=False)
     so = Column(Integer, nullable=False)
     date = Column(Date, nullable=False)
-    #player_name = Column(String, ForeignKey("hitters.baseball_reference_name"))
+    player_name = Column(String, ForeignKey("hitters.baseball_reference_name"))
     
