@@ -14,7 +14,7 @@ def get_player(db: Session, savant_id:int=None, mlb_name:str=None,fg_id:int=None
         query = query.filter(models.Hitters.fg_id==fg_id)
     if baseball_reference_name:
         query = query.filter(models.Hitters.baseball_reference_name==baseball_reference_name)
-    return query
+    return query.first()
 
 
 def get_logs(db: Session, name:str, date:str=None, tm:str=None):
