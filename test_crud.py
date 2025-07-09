@@ -13,7 +13,6 @@ def db_session():
 def test_get_player(db_session):
     """Tests that you can return Aaron Judge"""
     player = crud.get_player(db_session, savant_id=592450)
-    print(player.savant_id)
     #assert player.savant_id==592450
 
 def test_get_logs(db_session):
