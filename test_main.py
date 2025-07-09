@@ -14,7 +14,7 @@ def test_read_players():
     assert response.json().get("savant_id")==592450
 
 def test_get_logs():
-    response = client.get("/v0/performances/?name=Aaron Judge")
+    response = client.get("/v0/performances/")
     assert response.status_code==200
     
 
