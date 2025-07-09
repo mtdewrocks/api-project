@@ -7,8 +7,8 @@ import models
 def get_player(db: Session, savant_id:int):
     return db.query(models.Hitters).filter(models.Hitters.savant_id==savant_id).first()
 
-def get_logs(db: Session, player:str):
-    return db.query(models.Logs).filter(models.Logs.name==player)
+def get_logs(db: Session, name:str):
+    return db.query(models.Logs).filter(models.Logs.name==name)
 
 def get_player_counts(db: Session):
     query = db.query(models.Hitters)
