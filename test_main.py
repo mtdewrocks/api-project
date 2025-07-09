@@ -15,6 +15,7 @@ def test_read_players():
 
 def test_get_logs():
     response = client.get("/v0/performances/?name=Aaron Judge")
+    print(response.json())
     assert response.status_code==200
     
 

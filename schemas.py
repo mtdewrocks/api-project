@@ -25,7 +25,7 @@ class Logs(BaseModel):
     h : int
     hr : int
     so : int
-    date : date
+    date : str
 
 class Counts(BaseModel):
     player_count : int

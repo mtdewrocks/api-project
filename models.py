@@ -26,7 +26,7 @@ class Logs(Base):
     date_player = Column(String, nullable=False, primary_key=True, index=True)
     name = Column(String, nullable=False)
     tm = Column(String, nullable=False)
-    away_flag = Column(String)
+    away_flag = Optional[str]
     opp = Column(String)
     ab = Column(Integer, nullable=False)
     h = Column(Integer, nullable=False)
