@@ -17,7 +17,7 @@ def test_get_player(db_session):
 
 def test_get_logs(db_session):
     """Tests that you can get the game logs for Aaron Judge"""
-    performances = crud.get_logs(db_session, player="Aaron Judge")
+    performances = crud.get_logs(db_session, name="Aaron Judge")
     assert performances.count()==49
 
 def test_get_player_counts(db_session):
