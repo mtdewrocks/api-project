@@ -13,6 +13,11 @@ def test_read_players():
     assert response.status_code==200
     assert response.json().get("savant_id")==592450
 
+def test_get_logs():
+    response = client.get("/v0/performancess/?name='Aaron Judge'")
+    assert response.status_code==200
+    
+
 def test_counts():
     response = client.get("/v0/counts")
     response_data = response.json()
