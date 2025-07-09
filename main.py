@@ -30,7 +30,7 @@ def get_logs(name: str=None, db: Session=Depends(get_db)):
     logs = crud.get_logs(db, name=name)
     if logs is None:
         raise HTTPException(status_code=404, detail="Player game logs not found")
-    return 
+    return logs
     
 @app.get("/v0/counts/", response_model=schemas.Counts)
 def get_counts(db: Session=Depends(get_db)):
