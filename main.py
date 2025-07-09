@@ -1,6 +1,7 @@
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 from datetime import date
+from typing import List
 
 import crud, schemas
 from database import SessionLocal
@@ -25,9 +26,9 @@ def read_player(savant_id:int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Player not found")
     return player
 
-@app.get("/v0/performances/", response_model=schemas.Logs)
-def get_logs(name: str, db: Session=Depends(get_db)):
-    logs = crud.get_logs(db, name=name).all()
+@app.get("/v0/performances/", response_model=list[schemas.Logs])
+def get_logs(name: str, date: str=None, tm: str=None, db: Session=Depends(get_db)):
+    logs = crud.get_logs(db, name=name, date=date, tm=tm).all()
     return logs
     
 @app.get("/v0/counts/", response_model=schemas.Counts)

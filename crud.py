@@ -4,11 +4,28 @@ from datetime import date
 
 import models
 
-def get_player(db: Session, savant_id:int):
-    return db.query(models.Hitters).filter(models.Hitters.savant_id==savant_id).first()
+def get_player(db: Session, savant_id:int=None, mlb_name:str=None,fg_id:int=None,baseball_reference_name:str=None):
+    query = db.query(models.Hitters)
+    if savant_id:
+        query = query.filter(models.Hitters.savant_id==savant_id)
+    if mlb_name:
+        query = query.filter(models.Hitters.mlb_name==mlb_name)
+    if fg_id:
+        query = query.filter(models.Hitters.fg_id==fg_id)
+    if baseball_reference_name:
+        query = query.filter(models.Hitters.baseball_reference_name==baseball_reference_name)
+    return query
 
-def get_logs(db: Session, name:str):
-        return db.query(models.Logs).filter(models.Logs.name==name)
+
+def get_logs(db: Session, name:str, date:str=None, tm:str=None):
+    query = db.query(models.Logs)
+    if name:
+        query = query.filter(models.Logs.name==name)
+    if date:
+        query = query.filter(models.Logs.date==date)
+    if tm:
+        query = query.filter(models.Logs.tm==tm)
+    return query
 
 
 def get_player_counts(db: Session):
