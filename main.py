@@ -27,7 +27,7 @@ def read_player(savant_id:int, db: Session = Depends(get_db)):
 
 @app.get("/v0/performances/", response_model=schemas.Logs)
 def get_logs(player: str, db: Session=Depends(get_db)):
-    logs = crud.get_logs(db, player=name)
+    logs = crud.get_logs(db, name=player)
     if logs is None:
         raise HTTPException(status_code=404, detail="Player game logs not found")
     return 
