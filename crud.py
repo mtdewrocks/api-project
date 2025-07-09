@@ -8,7 +8,7 @@ def get_player(db: Session, savant_id:int):
     return db.query(models.Hitters).filter(models.Hitters.savant_id==savant_id).first()
 
 def get_logs(db: Session, name:str):
-    if name not None:
+    if name:
         return db.query(models.Logs).filter(models.Logs.name==name)
     else:
         return db.query(models.Logs)
