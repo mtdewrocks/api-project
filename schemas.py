@@ -1,5 +1,6 @@
 from pydantic import BaseModel, ConfigDict
 from datetime import date
+from typing import Optional
 
 class Hitters(BaseModel):
     model_config = ConfigDict(from_attributes = True)
@@ -19,7 +20,7 @@ class Logs(BaseModel):
     date_player : str
     name : str
     tm : str
-    away_flag : str
+    away_flag : Optional[str]
     opp : str
     ab : int
     h : int
