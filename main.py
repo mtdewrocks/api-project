@@ -27,7 +27,7 @@ def read_player(savant_id:int, db: Session = Depends(get_db)):
 
 @app.get("/v0/performances/", response_model=schemas.Logs)
 def get_logs(name: str, db: Session=Depends(get_db)):
-    logs = crud.get_logs(db, name=name).first()
+    logs = crud.get_logs(db, name=name).all()
     return logs
     
 @app.get("/v0/counts/", response_model=schemas.Counts)
