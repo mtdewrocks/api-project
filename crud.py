@@ -19,7 +19,7 @@ def get_player(db: Session, savant_id:int=None, mlb_name:str=None,fg_id:int=None
 def get_pitcher(db: Session, savant_id:int=None, mlb_name:str=None,fg_id:int=None,baseball_reference_name:str=None):
     query = db.query(models.Pitchers)
     if savant_id:
-        query = query.filter(models.Pitcher.savant_id==savant_id)
+        query = query.filter(models.Pitchers.savant_id==savant_id)
     if mlb_name:
         query = query.filter(models.Pitchers.mlb_name==mlb_name)
     if fg_id:
