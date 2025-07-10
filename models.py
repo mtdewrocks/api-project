@@ -37,3 +37,17 @@ class Logs(Base):
     date = Column(String, nullable=False)
     #player_name = Column(String, ForeignKey("hitters.baseball_reference_name"))
     
+class Pitchers(Base):
+    __tablename__ = "pitchers"
+
+    mlb_name = Column(String, nullable=False)
+    mlb_team = Column(String, nullable=False)
+    throws = Column(String, nullable=False)
+    fg_id = Column(Integer, nullable=False)
+    fg_name = Column(String, nullable=False)
+    rotowire_name = Column(String, nullable=False)
+    savant_name = Column(String, nullable=False)
+    savant_id = Column(Integer, nullable=False, primary_key=True, index=True)
+    baseball_reference_name = Column(String, nullable=False)
+    props_name = Column(String, nullable=False)
+    tm = Column(String, nullable=False)

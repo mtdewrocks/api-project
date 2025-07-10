@@ -15,6 +15,11 @@ def test_get_player(db_session):
     player = crud.get_player(db_session, savant_id=592450)
     assert player.savant_id==592450
 
+def test_get_pitcher(db_session):
+    """Tests that you can return Aaron Judge"""
+    player = crud.get_pitcher(db_session, savant_id=694819)
+    assert player.savant_id==694819
+
 def test_get_logs(db_session):
     """Tests that you can get the game logs for Aaron Judge"""
     performances = crud.get_logs(db_session, name="Aaron Judge")

@@ -16,6 +16,19 @@ def get_player(db: Session, savant_id:int=None, mlb_name:str=None,fg_id:int=None
         query = query.filter(models.Hitters.baseball_reference_name==baseball_reference_name)
     return query.first()
 
+def get_pitcher(db: Session, savant_id:int=None, mlb_name:str=None,fg_id:int=None,baseball_reference_name:str=None):
+    query = db.query(models.Pitchers)
+    if savant_id:
+        query = query.filter(models.Pitcher.savant_id==savant_id)
+    if mlb_name:
+        query = query.filter(models.Pitchers.mlb_name==mlb_name)
+    if fg_id:
+        query = query.filter(models.Pitchers.fg_id==fg_id)
+    if baseball_reference_name:
+        query = query.filter(models.Pitchers.baseball_reference_name==baseball_reference_name)
+    return query.first()
+
+
 
 def get_logs(db: Session, name:str, date:str=None, tm:str=None):
     query = db.query(models.Logs)

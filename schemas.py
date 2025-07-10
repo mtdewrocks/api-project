@@ -14,6 +14,19 @@ class Hitters(BaseModel):
     props_name : str
     tm : str
 
+class Pitchers(BaseModel):
+    model_config = ConfigDict(from_attributes = True)
+    mlb_name : str 
+    mlb_team : str
+    throws : str
+    fg_id : int
+    rotowire_name : str
+    savant_name : str
+    savant_id : int
+    baseball_reference_name : str
+    props_name : str
+    tm : str
+
 class Logs(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 

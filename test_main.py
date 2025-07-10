@@ -17,7 +17,11 @@ def test_get_logs():
     response = client.get("/v0/performances/?name=Aaron Judge")
     print(response.json())
     assert response.status_code==200
-    
+
+def test_pitchers():
+    response = client.get("/v0/pitchers/?savant_id=694819")
+    assert response.status_code==200
+    assert response.json().get("savant_id")==694819
 
 def test_counts():
     response = client.get("/v0/counts")
