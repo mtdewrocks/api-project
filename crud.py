@@ -29,7 +29,6 @@ def get_pitcher(db: Session, savant_id:int=None, mlb_name:str=None,fg_id:int=Non
     return query.first()
 
 
-
 def get_logs(db: Session, name:str, date:str=None, tm:str=None):
     query = db.query(models.Logs)
     if name:

@@ -26,7 +26,7 @@ def read_player(savant_id:int=None,fg_id:int=None,baseball_reference_name:str=No
         raise HTTPException(status_code=404, detail="Player not found")
     return player
 
-@app.get("/v0/pitchers/", response_model=schemas.Hitters)
+@app.get("/v0/pitchers/", response_model=schemas.Pitchers)
 def read_pitcher(savant_id:int=None,fg_id:int=None,baseball_reference_name:str=None, mlb_name:str=None,db: Session = Depends(get_db)):
     pitcher = crud.get_pitcher(db, savant_id=savant_id,baseball_reference_name=baseball_reference_name,fg_id=fg_id,mlb_name=mlb_name)
     if pitcher is None:
