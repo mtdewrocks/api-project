@@ -3,7 +3,8 @@ import pandas as pd
 # Load Excel data
 df_excel = pd.read_excel("hitters.xlsx")
 
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import declarative_base, Session
+from sqlalchemy import create_engine, MetaData, Table, select
 engine = create_engine("sqlite:///mlb_api.db")
 
 Base = declarative_base()
