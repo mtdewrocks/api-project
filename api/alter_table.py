@@ -32,7 +32,7 @@ with Session(engine) as session:
 
     # Step 3: Create ORM objects from new rows
     hitters_to_add = [
-        Hitter(mlb_name=row['mlb_name'], mlb_team=row['mlb_team'], bats=row['bats'],
+        Hitters(mlb_name=row['mlb_name'], mlb_team=row['mlb_team'], bats=row['bats'],
         fg_id=row['fg_id'], fg_name=row['fg_name'], savant_name=row['savant_name'],
         savant_id=row['savant_id'], baseball_reference_name=row['baseball_reference_name'],
         props_name=row["props_name"], tm=row['tm'])  # Add other columns if needed
