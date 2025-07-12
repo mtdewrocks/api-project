@@ -28,7 +28,7 @@ with Session(engine) as session:
     existing_ids = set(session.scalars(select(Hitters.savant_id)).all())
 
     # Step 2: Filter DataFrame to only new rows
-    new_rows = df[~df['id'].isin(existing_ids)]
+    new_rows = df[~df['savant_id'].isin(existing_ids)]
 
     # Step 3: Create ORM objects from new rows
     hitters_to_add = [
