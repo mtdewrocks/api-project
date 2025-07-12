@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load Excel data
-df_excel = pd.read_excel("hitters.xlsx")
+df = pd.read_excel("hitters.xlsx")
 
 from sqlalchemy.orm import declarative_base, Session
 from sqlalchemy import create_engine, MetaData, Table, select, Column, Integer, String
