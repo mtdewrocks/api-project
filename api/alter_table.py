@@ -25,7 +25,7 @@ class Hitters(Base):
 
 with Session(engine) as session:
     # Step 1: Get existing IDs in the table
-    existing_ids = set(session.scalars(select(Hitter.savant_id)).all())
+    existing_ids = set(session.scalars(select(Hitters.savant_id)).all())
 
     # Step 2: Filter DataFrame to only new rows
     new_rows = df[~df['id'].isin(existing_ids)]
