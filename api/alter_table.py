@@ -2,6 +2,7 @@ import pandas as pd
 
 # Load Excel data
 df = pd.read_excel("hitters.xlsx")
+df = df.query("savant_id>0")
 
 from sqlalchemy.orm import declarative_base, Session
 from sqlalchemy import create_engine, MetaData, Table, select, Column, Integer, String
@@ -29,7 +30,8 @@ with Session(engine) as session:
 
     # Step 2: Filter DataFrame to only new rows
     new_rows = df[~df['savant_id'].isin(existing_ids)]
-
+    print(new_rows.shape)
+    print(new_rows.head())
     # Step 3: Create ORM objects from new rows
     hitters_to_add = [
         Hitters(mlb_name=row['mlb_name'], mlb_team=row['mlb_team'], bats=row['bats'],
