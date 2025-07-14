@@ -3,8 +3,8 @@ name: Run on Excel File Change
 on:
   push:
     paths:
-      - '**/game_log.xlsx'
-      - '**/hitters.xlsx'
+      - 'api/game_log.xlsx'
+      - 'api/hitters.xlsx'
 
 jobs:
   process-excel:
