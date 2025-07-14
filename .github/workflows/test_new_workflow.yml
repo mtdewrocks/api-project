@@ -1,0 +1,26 @@
+name: Run on Excel File Change
+
+on:
+  push:
+    paths:
+      - 'api/game_log.xlsx'
+      - 'api/hitters.xlsx'
+
+jobs:
+  process-excel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Process Excel file
+        run: python alter_table.py
