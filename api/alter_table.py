@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load Excel data
-df = pd.read_excel("api/hitters.xlsx")
+df = pd.read_excel("**/hitters.xlsx")
 df = df.query("savant_id>0")
 
 from sqlalchemy.orm import declarative_base, Session
