@@ -23,4 +23,4 @@ jobs:
           pip install -r api/requirements.txt
 
       - name: Process Excel file
-        run: python alter_table.py
+        run: python api/alter_table.py
