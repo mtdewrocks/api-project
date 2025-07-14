@@ -16,13 +16,11 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-        python-version: '3.11'
-      
+          python-version: '3.11'
+
       - name: Install dependencies
         run: |
-          pip install -r '**/requirements.txt
+          pip install -r requirements.txt
 
       - name: Process Excel file
         run: python alter_table.py
-          
-          # Add your script or commands to process the Excel file here
