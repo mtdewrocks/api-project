@@ -8,7 +8,7 @@ df = df.query("savant_id>0")
 
 from sqlalchemy.orm import declarative_base, Session
 from sqlalchemy import create_engine, MetaData, Table, select, Column, Integer, String
-engine = create_engine("sqlite:///.api/mlb_api.db")
+engine = create_engine("sqlite:///mlb_api.db")
 
 Base = declarative_base()
 
