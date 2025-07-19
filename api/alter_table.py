@@ -1,7 +1,5 @@
 import pandas as pd
-import os
 
-print(os.getcwd())
 # Load Excel data
 df = pd.read_excel("hitters.xlsx")
 df = df.query("savant_id>0")
