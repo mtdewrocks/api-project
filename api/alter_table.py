@@ -4,6 +4,7 @@ import os
 # Load Excel data
 df = pd.read_excel("api/hitters.xlsx")
 df = df.query("savant_id>0")
+df = df.drop("Draftkings Name")
 
 from sqlalchemy.orm import declarative_base, Session
 from sqlalchemy import create_engine, MetaData, Table, select, Column, Integer, String
@@ -43,13 +44,15 @@ with Session(engine) as session:
 
     for _, row in df_filtered.iterrows():
         existing = session.get(Hitters, row["savant_id"])
-	if existing:
-		# Update fields that may have changed
-		existing.mlb_team = row["mlb_team"]
-		# You can update more if needed
-	else:
-		# Insert new row
-		new_hitter = Hitters(**row.to_dict())
-		session.add(new_hitter)
+        if existing:
+            #checks if there was a change in team and only writes if there was a change
+            if existing.mlb_team != row['mlb_team']:
+                existing.mlb_team = row['mlb_team']
+
+            # You can update more if needed
+        else:
+        	# Insert new row
+        	new_hitter = Hitters(**row.to_dict())
+        	session.add(new_hitter)
 
     session.commit()
