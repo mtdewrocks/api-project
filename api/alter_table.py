@@ -52,10 +52,10 @@ with Session(engine) as session:
             # You can update more if needed
         else:
         	# Checks what columns are allowed to be included and then adds only those columns
-        	allowed_keys = {column.name for column in Hitters.__table__.columns}
-                row_dict = {k: v for k, v in row.items() if k in allowed_keys}
-                new_hitter = Hitters(**row_dict)
+            allowed_keys = {column.name for column in Hitters.__table__.columns}
+            row_dict = {k: v for k, v in row.items() if k in allowed_keys}
+            new_hitter = Hitters(**row_dict)
 
-        	session.add(new_hitter)
+            session.add(new_hitter)
 
     session.commit()
