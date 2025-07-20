@@ -42,14 +42,14 @@ with Session(engine) as session:
 
 
     for _, row in df_filtered.iterrows():
-    existing = session.get(Hitters, row["savant_id"])
-    if existing:
-        # Update fields that may have changed
-        existing.mlb_team = row["mlb_team"]
-        # You can update more if needed
-    else:
-        # Insert new row
-        new_hitter = Hitters(**row.to_dict())
-        session.add(new_hitter)
+        existing = session.get(Hitters, row["savant_id"])
+	if existing:
+		# Update fields that may have changed
+		existing.mlb_team = row["mlb_team"]
+		# You can update more if needed
+	else:
+		# Insert new row
+		new_hitter = Hitters(**row.to_dict())
+		session.add(new_hitter)
 
     session.commit()
