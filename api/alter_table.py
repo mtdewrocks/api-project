@@ -39,11 +39,11 @@ with Session(engine) as session:
     session.execute(
         select(Hitters.savant_id, Hitters.mlb_name, Hitters.mlb_team)
     ).all(),
-    columns=["savant_id", "mlb_name", "mlb_team"]
+    columns=["savant_id", "mlb_name", "mlb_team","mlb_team_long"]
     )
 
     # Merge on the 3 target columns to find matching rows
-    merged = df.merge(df_db, on=["savant_id", "mlb_name", "mlb_team"], how="left", indicator=True)
+    merged = df.merge(df_db, on=["savant_id", "mlb_name", "mlb_team","mlb_team_long"], how="left", indicator=True)
 
     # Keep only rows not present in SQL table
     df_filtered = merged[merged["_merge"] == "left_only"].drop(columns=["_merge"])
