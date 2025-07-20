@@ -27,22 +27,29 @@ class Hitters(Base):
 
 with Session(engine) as session:
     # Step 1: Get existing IDs in the table
-    existing_ids = set(session.scalars(select(Hitters.savant_id)).all())
+    df_db = pd.DataFrame(
+    session.execute(
+        select(Hitters.savant_id, Hitters.mlb_name, Hitters.mlb_team)
+    ).all(),
+    columns=["savant_id", "mlb_name", "mlb_team"]
+    )
 
-    # Step 2: Filter DataFrame to only new rows
-    new_rows = df[~df['savant_id'].isin(existing_ids)]
-    print(new_rows.shape)
-    print(new_rows.head())
-    # Step 3: Create ORM objects from new rows
-    hitters_to_add = [
-        Hitters(mlb_name=row['mlb_name'], mlb_team=row['mlb_team'], bats=row['bats'],
-        fg_id=row['fg_id'], fg_name=row['fg_name'], savant_name=row['savant_name'],
-        savant_id=row['savant_id'], baseball_reference_name=row['baseball_reference_name'],
-        props_name=row["props_name"], tm=row['tm'])  # Add other columns if needed
-        for _, row in new_rows.iterrows()
-    ]
+    # Merge on the 3 target columns to find matching rows
+    merged = df.merge(df_db, on=["savant_id", "mlb_name", "mlb_team"], how="left", indicator=True)
+
+    # Keep only rows not present in SQL table
+    df_filtered = merged[merged["_merge"] == "left_only"].drop(columns=["_merge"])
 
 
-    # Step 4: Bulk insert
-    session.add_all(hitters_to_add)
+    for _, row in df_filtered.iterrows():
+    existing = session.get(Hitters, row["savant_id"])
+    if existing:
+        # Update fields that may have changed
+        existing.mlb_team = row["mlb_team"]
+        # You can update more if needed
+    else:
+        # Insert new row
+        new_hitter = Hitters(**row.to_dict())
+        session.add(new_hitter)
+
     session.commit()
