@@ -6,6 +6,7 @@ class Hitters(BaseModel):
     model_config = ConfigDict(from_attributes = True)
     mlb_name : str 
     mlb_team : str
+    mlb_team_long : str
     bats : str
     fg_id : int
     savant_name : str
@@ -18,6 +19,7 @@ class Pitchers(BaseModel):
     model_config = ConfigDict(from_attributes = True)
     mlb_name : str 
     mlb_team : str
+    mlb_team_long : str
     throws : str
     fg_id : int
     rotowire_name : str
