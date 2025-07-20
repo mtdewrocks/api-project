@@ -4,7 +4,7 @@ import os
 # Load Excel data
 current_directory = os.getcwd()
 print(current_directory)
-if current_directory = "/workspaces/api-project/api":
+if current_directory == "/workspaces/api-project/api":
     df = pd.read_excel("hitters")
 else:
     df = pd.read_excel("api/hitters.xlsx")
@@ -13,7 +13,7 @@ else:
 
 from sqlalchemy.orm import declarative_base, Session
 from sqlalchemy import create_engine, MetaData, Table, select, Column, Integer, String
-if current_directory = "/workspaces/api-project/api":
+if current_directory == "/workspaces/api-project/api":
     engine = create_engine("sqlite:///mlb_api.db")
 else:
     engine = create_engine("sqlite:///api/mlb_api.db")
