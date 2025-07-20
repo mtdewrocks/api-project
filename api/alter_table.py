@@ -24,6 +24,7 @@ class Hitters(Base):
 
     mlb_name = Column(String, nullable=False)
     mlb_team = Column(String, nullable=False)
+    mlb_team_long = Column(String, nullable=False)
     bats = Column(String, nullable=False)
     fg_id = Column(Integer, nullable=False)
     fg_name = Column(String, nullable=False)
