@@ -2,6 +2,8 @@ import pandas as pd
 import os
 
 # Load Excel data
+current_directory = os.getcwd()
+print(current_directory)
 df = pd.read_excel("api/hitters.xlsx")
 df = df.query("savant_id>0")
 
