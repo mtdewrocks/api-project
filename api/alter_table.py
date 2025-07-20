@@ -5,10 +5,7 @@ import os
 current_directory = os.getcwd()
 print(current_directory)
 if current_directory == "/workspaces/api-project/api":
-    print("Files in directory:", os.listdir("/workspaces/api-project/api"))
-
-    print('I am here')
-    df = pd.read_excel(current_directory+"/hitters")
+    df = pd.read_excel("hitters.xlsx")
 else:
     df = pd.read_excel("api/hitters.xlsx")
     df = df.query("savant_id>0")
