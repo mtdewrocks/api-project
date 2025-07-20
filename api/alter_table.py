@@ -5,6 +5,8 @@ import os
 current_directory = os.getcwd()
 print(current_directory)
 if current_directory == "/workspaces/api-project/api":
+    print("Files in directory:", os.listdir("/workspaces/api-project/api"))
+
     print('I am here')
     df = pd.read_excel(current_directory+"/hitters")
 else:
