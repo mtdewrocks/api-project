@@ -54,8 +54,8 @@ with Session(engine) as session:
         existing = session.get(Hitters, row["savant_id"])
         if existing:
             #checks if there was a change in team and only writes if there was a change
-            if existing.mlb_team != row['mlb_team']:
-                existing.mlb_team = row['mlb_team']
+            if existing.mlb_team != row['mlb_team_long']:
+                existing.mlb_team = row['mlb_team_long']
 
             # You can update more if needed
         else:
