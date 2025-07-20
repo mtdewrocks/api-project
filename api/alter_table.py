@@ -37,7 +37,7 @@ with Session(engine) as session:
     # Step 1: Get existing IDs in the table
     df_db = pd.DataFrame(
     session.execute(
-        select(Hitters.savant_id, Hitters.mlb_name, Hitters.mlb_team)
+        select(Hitters.savant_id, Hitters.mlb_name, Hitters.mlb_team, Hitters.mlb_team_long)
     ).all(),
     columns=["savant_id", "mlb_name", "mlb_team","mlb_team_long"]
     )
