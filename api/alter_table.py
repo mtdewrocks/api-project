@@ -4,7 +4,7 @@ import os
 # Load Excel data
 df = pd.read_excel("api/hitters.xlsx")
 df = df.query("savant_id>0")
-df = df.drop("Draftkings Name")
+
 
 from sqlalchemy.orm import declarative_base, Session
 from sqlalchemy import create_engine, MetaData, Table, select, Column, Integer, String
