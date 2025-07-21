@@ -2,7 +2,8 @@ from sqlalchemy.orm import Session
 from sqlalchemy.orm import joinedload
 from datetime import date
 
-import models
+#Changed line below
+from api import models
 
 def get_player(db: Session, savant_id:int=None, mlb_name:str=None,fg_id:int=None,baseball_reference_name:str=None):
     query = db.query(models.Hitters)
