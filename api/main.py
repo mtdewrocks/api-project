@@ -3,8 +3,8 @@ from sqlalchemy.orm import Session
 from datetime import date
 from typing import List
 #changed import below
-from api import crud, schemas
-from api.database import SessionLocal
+import crud, schemas
+from database import SessionLocal
 
 app = FastAPI()
 
