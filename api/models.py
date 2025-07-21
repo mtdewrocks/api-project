@@ -23,6 +23,16 @@ class Hitters(Base):
     #game_logs = relationship("Logs", back_populates="hitters")
 
 
+class PitcherSeasonStats(Base):
+    __tablename__ = "pitcher_season_stats"
+
+    savant_id = Column(Integer, nullable=False, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+    tm = Column(String, nullable=False)
+    age = Column(Integer)
+    games = Column(Integer, nullable=False)
+    
+
 class Logs(Base):
     __tablename__ = "game_logs"
     
