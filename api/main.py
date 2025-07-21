@@ -4,7 +4,7 @@ from datetime import date
 from typing import List
 #changed import below
 from api import crud, schemas
-from database import SessionLocal
+from api.database import SessionLocal
 
 app = FastAPI()
 
