@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 from typing import Optional
 
 #Changed line below
-from api.database import Base
+from database import Base
 
 class Hitters(Base):
     __tablename__ = "hitters"
