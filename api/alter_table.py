@@ -1,11 +1,20 @@
 import pandas as pd
 import os
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
+
 
 # Load Excel data
 current_directory = os.getcwd()
 print(current_directory)
 if current_directory == "/workspaces/api-project/api":
     df = pd.read_excel("hitters.xlsx")
+    logger.info("Succesffully read hitters file.")
 else:
     df = pd.read_excel("api/hitters.xlsx")
     df = df.query("savant_id>0")
@@ -15,6 +24,7 @@ from sqlalchemy.orm import declarative_base, Session
 from sqlalchemy import create_engine, MetaData, Table, select, Column, Integer, String
 if current_directory == "/workspaces/api-project/api":
     engine = create_engine("sqlite:///mlb_api.db")
+    logging.info("Successfully created sql engine")
 else:
     engine = create_engine("sqlite:///api/mlb_api.db")
 Base = declarative_base()
@@ -42,13 +52,13 @@ with Session(engine) as session:
     ).all(),
     columns=["savant_id", "mlb_name", "mlb_team","mlb_team_long"]
     )
-
+    logging.info("Successfully executed session.execute")
     # Merge on the 3 target columns to find matching rows
     merged = df.merge(df_db, on=["savant_id", "mlb_name", "mlb_team","mlb_team_long"], how="left", indicator=True)
 
     # Keep only rows not present in SQL table
     df_filtered = merged[merged["_merge"] == "left_only"].drop(columns=["_merge"])
-
+    print(df_filtered.shape)
 
     for _, row in df_filtered.iterrows():
         existing = session.get(Hitters, row["savant_id"])
@@ -56,6 +66,7 @@ with Session(engine) as session:
             #checks if there was a change in team and only writes if there was a change
             if existing.mlb_team != row['mlb_team']:
                 existing.mlb_team = row['mlb_team']
+                logging.info("Successfully updated mlb_team")
 
             if existing.mlb_team_long != row['mlb_team_long']:
                 existing.mlb_team_long = row['mlb_team_long']
@@ -70,5 +81,7 @@ with Session(engine) as session:
             new_hitter = Hitters(**row_dict)
 
             session.add(new_hitter)
+            logging.info("Succesfully added new hitter")
 
     session.commit()
+
