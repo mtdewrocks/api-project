@@ -24,3 +24,7 @@ jobs:
 
       - name: Process Excel file
         run: python api/alter_table.py
+
+      - name: Show log file
+        run: cat alter_table_log.log
+
