@@ -34,19 +34,36 @@ class PitcherSeasonStats(Base):
     
 
 class Logs(Base):
-    __tablename__ = "game_logs"
-    
-    date_player = Column(String, nullable=False, primary_key=True, index=True)
-    name = Column(String, nullable=False)
-    tm = Column(String, nullable=False)
-    away_flag = Column(String)
-    opp = Column(String)
-    ab = Column(Integer, nullable=False)
-    h = Column(Integer, nullable=False)
-    hr = Column(Integer, nullable=False)
-    so = Column(Integer, nullable=False)
-    date = Column(String, nullable=False)
-    #player_name = Column(String, ForeignKey("hitters.baseball_reference_name"))
+    __tablename__ = 'game_logs'
+    name = Column(String)
+    age = Column(Integer)
+    tm = Column(String)
+    home_or_away = Column(String, nullable=True)
+    opponent = Column(String)
+    PA = Column(Integer)
+    AB = Column(Integer)
+    R = Column(Integer)
+    H = Column(Integer)
+    DOUBLES = Column(Integer)
+    TRIPLES = Column(Integer)
+    HR = Column(Integer)
+    RBI = Column(Integer)
+    BB = Column(Integer)
+    IBB = Column(Integer)
+    SO = Column(Integer)
+    HBP = Column(Integer)
+    SH = Column(Integer)
+    SF = Column(Integer)
+    GDP = Column(Integer)
+    SB = Column(Integer)
+    CS = Column(Integer)
+    Hit_Flag = Column(Integer)
+    Multi_Hit_Flag = Column(Integer)
+    K_Flag = Column(Integer)
+    Multi_K_Flag = Column(Integer)
+    HR_Flag = Column(Integer)
+    date = Column(String)
+    date_player = Column(String, primary_key=True)
     
 class Pitchers(Base):
     __tablename__ = "pitchers"

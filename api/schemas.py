@@ -31,17 +31,35 @@ class Pitchers(BaseModel):
 
 class Logs(BaseModel):
     model_config = ConfigDict(from_attributes=True)
-
-    date_player : str
-    name : str
-    tm : str
-    away_flag : Optional[str]
-    opp : str
-    ab : int
-    h : int
-    hr : int
-    so : int
-    date : str
+    name: str
+    age: int
+    tm: str
+    home_or_away: Optional[str]
+    opponent: str
+    PA: int
+    AB: int
+    R: int
+    H: int
+    DOUBLES: int
+    TRIPLES: int
+    HR: int
+    RBI: int
+    BB: int
+    IBB: int
+    SO: int
+    HBP: int
+    SH: int
+    SF: int
+    GDP: int
+    SB: int
+    CS: int
+    Hit_Flag: int
+    Multi_Hit_Flag: int
+    K_Flag: int
+    Multi_K_Flag: int
+    HR_Flag: int
+    date: str
+    date_player: str
 
 class Counts(BaseModel):
     player_count : int
