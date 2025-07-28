@@ -30,7 +30,7 @@ def get_pitcher(db: Session, savant_id:int=None, mlb_name:str=None,fg_id:int=Non
     return query.first()
 
 
-def get_logs(db: Session, name:str, date:str=None, tm:str=None):
+def get_logs(db: Session, name:str=None, date:str=None, tm:str=None, date:str=None):
     query = db.query(models.Logs)
     if name:
         query = query.filter(models.Logs.name==name)
@@ -38,6 +38,8 @@ def get_logs(db: Session, name:str, date:str=None, tm:str=None):
         query = query.filter(models.Logs.date==date)
     if tm:
         query = query.filter(models.Logs.tm==tm)
+    if date:
+        query = query.filter(models.Logs.date==date)
     return query
 
 
