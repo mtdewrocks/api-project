@@ -11,6 +11,7 @@ logger = logging.getLogger(__name__)
 
 # Load Excel data
 current_directory = os.getcwd()
+logger.info(current_directory)
 print(current_directory)
 if current_directory == "/workspaces/api-project/api":
     df = pd.read_excel("hitters.xlsx")
@@ -26,6 +27,7 @@ if current_directory == "/workspaces/api-project/api":
     engine = create_engine("sqlite:///mlb_api.db")
     logger.info("Successfully created sql engine")
 else:
+    print('In here')
     engine = create_engine("sqlite:///api/mlb_api.db")
 Base = declarative_base()
 
@@ -53,6 +55,7 @@ with Session(engine) as session:
     columns=["savant_id", "mlb_name", "mlb_team","mlb_team_long"]
     )
     logger.info("Successfully executed session.execute")
+    logger.info(df_db.shape)
     # Merge on the 3 target columns to find matching rows
     merged = df.merge(df_db, on=["savant_id", "mlb_name", "mlb_team","mlb_team_long"], how="left", indicator=True)
 
