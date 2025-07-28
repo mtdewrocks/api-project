@@ -2,7 +2,7 @@ import pandas as pd
 import os
 import logging
 
-logging.basicConfig(
+logging.basicConfig(filename="alter_table_log.log",
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
