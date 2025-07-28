@@ -23,7 +23,7 @@ def test_get_pitcher(db_session):
 def test_get_logs(db_session):
     """Tests that you can get the game logs for Aaron Judge"""
     performances = crud.get_logs(db_session, name="Aaron Judge")
-    print(performances.shape)
+    print(performances)
 
 def test_get_player_counts(db_session):
     player_count = crud.get_player_counts(db_session)
