@@ -1,0 +1,35 @@
+from sqlalchemy import Column, ForeignKey, Integer, String, Float, Date
+from sqlalchemy.orm import relationship
+from database import Base
+
+class Logs(Base):
+    __tablename__ = 'game_logs'
+    name = Column(String)
+    age = Column(Integer)
+    tm = Column(String)
+    home_or_away = Column(String, nullable=True)
+    opponent = Column(String)
+    PA = Column(Integer)
+    AB = Column(Integer)
+    R = Column(Integer)
+    H = Column(Integer)
+    DOUBLES = Column(Integer)
+    TRIPLES = Column(Integer)
+    HR = Column(Integer)
+    RBI = Column(Integer)
+    BB = Column(Integer)
+    IBB = Column(Integer)
+    SO = Column(Integer)
+    HBP = Column(Integer)
+    SH = Column(Integer)
+    SF = Column(Integer)
+    GDP = Column(Integer)
+    SB = Column(Integer)
+    CS = Column(Integer)
+    Hit_Flag = Column(Integer)
+    Multi_Hit_Flag = Column(Integer)
+    K_Flag = Column(Integer)
+    Multi_K_Flag = Column(Integer)
+    HR_Flag = Column(Integer)
+    date = Column(String)
+    date_player = Column(String, primary_key=True)
