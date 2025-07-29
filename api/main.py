@@ -35,7 +35,7 @@ def read_pitcher(savant_id:int=None,fg_id:int=None,baseball_reference_name:str=N
 
 
 @app.get("/v0/game_logs/", response_model=list[schemas.Logs])
-def get_logs(name: str=None, fg_id:int=None, savant_id:int=None, date: str=None, tm: str=None, db: Session=Depends(get_db)):
+def get_logs(name: str=None, opponent: str=None, date: str=None, tm: str=None, db: Session=Depends(get_db)):
     logs = crud.get_logs(db, fg_id=fg_id, savant_id=savant_id, name=name, date=date, tm=tm).all()
     return logs
     
