@@ -5,7 +5,7 @@ from datetime import date
 #Changed line below
 import models
 
-def get_player(db: Session, savant_id:int=None, mlb_name:str=None,fg_id:int=None,baseball_reference_name:str=None):
+def get_player(db: Session, savant_id:int=None, mlb_name:str=None,fg_id:int=None,baseball_reference_name:str=None, mlb_team:str=None):
     query = db.query(models.Hitters)
     if savant_id:
         query = query.filter(models.Hitters.savant_id==savant_id)
@@ -15,6 +15,8 @@ def get_player(db: Session, savant_id:int=None, mlb_name:str=None,fg_id:int=None
         query = query.filter(models.Hitters.fg_id==fg_id)
     if baseball_reference_name:
         query = query.filter(models.Hitters.baseball_reference_name==baseball_reference_name)
+    if mlb_team:
+        query = query.filter(models.Hitters.mlb_team==mlb_team)
     return query.first()
 
 def get_pitcher(db: Session, savant_id:int=None, mlb_name:str=None,fg_id:int=None,baseball_reference_name:str=None):
