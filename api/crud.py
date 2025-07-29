@@ -30,10 +30,14 @@ def get_pitcher(db: Session, savant_id:int=None, mlb_name:str=None,fg_id:int=Non
     return query.first()
 
 
-def get_logs(db: Session, name:str=None, date:str=None, tm:str=None):
+def get_logs(db: Session, name:str=None, fg_id:int=None, savant_id:int=None,date:str=None, tm:str=None):
     query = db.query(models.Logs)
     if name:
         query = query.filter(models.Logs.name==name)
+    if fg_id:
+        query = query.filter(models.Logs.fg_id==fg_id)
+    if savant_id:
+        query = query.filter(models.Logs.savant_id==savant_id)
     if date:
         query = query.filter(models.Logs.date==date)
     if tm:
