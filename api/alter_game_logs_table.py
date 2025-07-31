@@ -66,10 +66,10 @@ class Logs(Base):
 with Session(engine) as session:
     # Step 1: Get existing IDs in the table
     df_db = pd.DataFrame(
-    session.execute(
-        select(Logs)).scalars().all(),
+    session.execute(select(Logs)).all(),
     columns=[column.name for column in Logs.__table__.columns]
-    )
+)
+
     logger.info("Successfully executed session.execute")
     logger.info(df_db.shape)
     # Merge on the 3 target columns to find matching rows
