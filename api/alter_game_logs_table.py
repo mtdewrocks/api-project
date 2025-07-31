@@ -75,6 +75,9 @@ with Session(engine) as session:
     # Merge on the 3 target columns to find matching rows
     merged = df.merge(df_db, on=["date_player"], how="left", indicator=True)
     print(merged)
+    print(merged.columns)
+    merged_test = merged.query("name=='Taylor Ward'")
+    print(merged_test.tail())
     # Keep only rows not present in SQL table
     df_filtered = merged[merged["_merge"] == "left_only"].drop(columns=["_merge"])
     print(df_filtered.shape)
