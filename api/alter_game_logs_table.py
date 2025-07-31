@@ -66,7 +66,7 @@ class Logs(Base):
 with Session(engine) as session:
     # Step 1: Get existing IDs in the table
     df_db = pd.DataFrame(
-    session.execute(select(Logs)).all(),
+    session.execute(select(*Logs.__table__.columns)).all(),
     columns=[column.name for column in Logs.__table__.columns]
 )
 
