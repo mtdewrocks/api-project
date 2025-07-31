@@ -73,13 +73,12 @@ with Session(engine) as session:
     logger.info("Successfully executed session.execute")
     logger.info(df_db.shape)
     # Merge on the 3 target columns to find matching rows
-    print(df.shape)
-    print(df_db.shape)
     merged = df.merge(df_db, on=["date_player"], how="left", indicator=True)
-
+    print(merged)
     # Keep only rows not present in SQL table
     df_filtered = merged[merged["_merge"] == "left_only"].drop(columns=["_merge"])
     print(df_filtered.shape)
+    print(error)
 
     for _, row in df_filtered.iterrows():
         existing = session.get(Logs, row["date_player"])
