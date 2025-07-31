@@ -67,8 +67,7 @@ with Session(engine) as session:
     # Step 1: Get existing IDs in the table
     df_db = pd.DataFrame(
     session.execute(
-        select(Logs).scalars()
-    ).all(),
+        select(Logs)).scalars().all(),
     columns=[column.name for column in Logs.__table__.columns]
     )
     logger.info("Successfully executed session.execute")
