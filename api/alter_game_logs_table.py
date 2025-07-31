@@ -14,10 +14,10 @@ current_directory = os.getcwd()
 logger.info(current_directory)
 print(current_directory)
 if current_directory == "/workspaces/api-project/api":
-    df = pd.read_excel("game_log.xlsx")
+    df = pd.read_excel("hitter_game_logs.xlsx")
     logger.info("Succesffully read game logs file.")
 else:
-    df = pd.read_excel("api/game_log.xlsx")
+    df = pd.read_excel("api/hitter_game_logs.xlsx")
     
 
 
@@ -73,6 +73,8 @@ with Session(engine) as session:
     logger.info("Successfully executed session.execute")
     logger.info(df_db.shape)
     # Merge on the 3 target columns to find matching rows
+    print(df.shape)
+    print(df_db.shape)
     merged = df.merge(df_db, on=["date_player"], how="left", indicator=True)
 
     # Keep only rows not present in SQL table
